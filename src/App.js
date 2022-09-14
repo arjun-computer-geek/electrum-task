@@ -1,9 +1,23 @@
+import { Login } from "./pages/login/Login";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function App() {
+const App = () =>{
   return (
-    <div className="App">
-      Hey Good Evening..
-    </div>
+    <>
+    <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+      />
+
+      <Login />
+    </>
   );
 }
 

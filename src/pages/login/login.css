@@ -1,0 +1,90 @@
+.login-main{
+    padding-top: 2rem;
+}
+.login-main .form-container {
+    margin-top: 5rem;
+    background: var(--gray-00);
+    width: 20rem;
+    min-height: 30rem;
+    position: relative;
+    text-align: center;
+    padding: 1.25em 0;
+    margin: auto;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+ 
+.login-main .form-container span {
+    font-weight: bold;
+    padding: 0 .5em;
+    color: var(--gray-75);
+    cursor: pointer;
+    width: 6.25rem;
+    display: inline-block;
+}
+
+.login-main .form-btn {
+    display: inline-block;
+}
+
+.login-main .form-container form {
+    max-width: 20rem;
+    padding: 0 1.25em;
+    position: absolute;
+    top: 8rem;
+    transition: transform 1s;
+}
+
+.login-main form input {
+    width: 100%;
+    height: 1.8rem;
+    margin: .6em 0;
+    padding: 0 .6em;
+    border: 1px solid var(--gray-15);
+}
+
+.login-main form .btn {
+    color: var(--gray-00);
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: .6em 0;
+    background-color: var(--love-dark);
+}
+.login-main form .btn:hover{
+    background-color: var(--love-light);
+    color: var(--gray-00);
+    border-color: transparent;
+}
+.login-main form .btn-outline{
+    border: 1px solid var(--gray-85);
+    background-color: transparent;
+    color: var(--gray-90);
+}
+.login-main form a {
+    font-size: .75rem;
+}
+
+.login-main #loginForm {
+    left: 0;
+}
+
+.login-main #regForm {
+    left: -18.75rem;
+}
+
+.login-main #indicator {
+    width: 100px;
+    border: none;
+    background: var(--love-light);
+    height: 3px;
+    margin-top: 0.5em;
+    transform: translateX(6.25rem);
+    transition: transform 1s;
+}
+.login-main .forgot-password{
+    color: var(--love-dark);
+} 
+.login-main .forgot-password:hover{
+    color: var(--love-light);
+} 
