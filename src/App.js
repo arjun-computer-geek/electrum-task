@@ -3,6 +3,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Signup } from "./pages/signup/Signup";
+import { Home } from "./pages/home/Home";
+import { Dashboard } from "./pages/dashboard/Dashboard";
 
 const App = () => {
   return (
@@ -19,10 +21,10 @@ const App = () => {
       />
       <Router>
         <Routes>
-          <Route path="/" element={<h1>Home</h1>} />
+          <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
     </>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./login.css";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export const Login = () => {
   const [userData, setUserData] = useState({})
@@ -19,12 +19,11 @@ export const Login = () => {
       toast.error("field can't be empty")
     }
     else{
-      console.log(users)
       let found = users.find(item => item.userName === userData.email || item.email === userData.email )
       if(found && found.password === userData.password){
-        localStorage.setItem('loggedInUser', JSON.stringify(userData))
+        localStorage.setItem('loggedInUser', JSON.stringify(found))
         toast.success("Loggedin Successfull");
-        navigate('/')
+        navigate('/dashboard')
       }
       else{
         toast.error('userName or email or password is incorrect')
@@ -57,9 +56,7 @@ export const Login = () => {
           <button type="submit" className="btn">
             Login
           </button>
-          <a className="forgot-password" href="">
-            Forgot Password
-          </a>
+          <Link to='/signup'>Signup</Link>
         </form>
       </div>
     </main>

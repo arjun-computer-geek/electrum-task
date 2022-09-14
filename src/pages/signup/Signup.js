@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 
 export const Signup = () => {
     const navigate = useNavigate()
@@ -8,9 +8,6 @@ export const Signup = () => {
     ? JSON.parse(localStorage.getItem("users"))
     : [])
     const [userData, setUserData] = useState({})
-    useEffect(() => {
-        localStorage.setItem('users', JSON.stringify(users))
-      }, [users])
 
     const onchangeHandler = (e) => {
         setUserData(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -32,6 +29,8 @@ export const Signup = () => {
       }
       else {
         setUsers(prev => ([...prev, { ...userData }]))
+        console.log(users)
+        localStorage.setItem('users', JSON.stringify([...users, {...userData}]))
         toast.success("user registered Successfull")
         navigate('/login')
       }
@@ -89,6 +88,7 @@ export const Signup = () => {
                     <button type="submit" className="btn">
                         Register
                     </button>
+                    <Link to="/login">login</Link>
                 </form>
             </div>
         </main>
