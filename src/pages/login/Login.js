@@ -5,9 +5,31 @@ import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [userData, setUserData] = useState({})
-
+  const [users, setUsers] = useState(localStorage.getItem("users")
+  ? JSON.parse(localStorage.getItem("users"))
+  : [])
+  const navigate = useNavigate()
+  
   const onchangeHandler = (e) => {
     setUserData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+  const loginSubmitHandler =(e) => {
+    e.preventDefault();
+    if (userData.email === undefined || userData.password === undefined ) {
+      toast.error("field can't be empty")
+    }
+    else{
+      console.log(users)
+      let found = users.find(item => item.userName === userData.email || item.email === userData.email )
+      if(found && found.password === userData.password){
+        localStorage.setItem('loggedInUser', JSON.stringify(userData))
+        toast.success("Loggedin Successfull");
+        navigate('/')
+      }
+      else{
+        toast.error('userName or email or password is incorrect')
+      }
+    }
   }
 
   return (
@@ -16,7 +38,7 @@ export const Login = () => {
         <h2>Login</h2>
 
         <form
-          // onSubmit={loginSubmitHandler}
+          onSubmit={loginSubmitHandler}
         >
           <input
             type="text"
