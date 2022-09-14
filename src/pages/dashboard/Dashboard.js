@@ -6,7 +6,7 @@ import Pagination from '@mui/material/Pagination';
 import './dashboard.css'
 export const Dashboard = () => {
   const dispatch = useDispatch()
-  const { users } = useSelector(state => state.user)
+  const { users, totalPages } = useSelector(state => state.user)
   useEffect(() => {
     dispatch(getAllUsers())
   }, [])
@@ -39,7 +39,7 @@ console.log(users)
       </table>
     </div>
     <div spacing={2}>
-      <Pagination count={10} color="primary" />
+      <Pagination count={totalPages} color="primary" />
     </div>
   </>
   )
