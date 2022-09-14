@@ -18,6 +18,11 @@ export const userSlice = createSlice({
         total: 0
 
     },
+    reducers: {
+        setCurrentPage : (state, action) => {
+            
+        }
+    },
     extraReducers: {
         [getAllUsers.pending]: (state, action) => {
 
