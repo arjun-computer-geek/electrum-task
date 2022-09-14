@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { DashboardHeader } from '../../component/DashboardHeader'
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers } from '../../redux/slices/userSlice';
+import { getAllUsers, setCurrentPage } from '../../redux/slices/userSlice';
 import Pagination from '@mui/material/Pagination';
 
 import './dashboard.css'
 export const Dashboard = () => {
-  const [page, setPage] = React.useState(1);
-  const handleChange = (event, value) => {
-    setPage(value);
-  };
+  const { users, totalPages, currentPage } = useSelector(state => state.user)
   const dispatch = useDispatch()
-  const { users, totalPages } = useSelector(state => state.user)
+  const[page, setPage] =  useState(1)
+
   useEffect(() => {
-    dispatch(getAllUsers())
-  }, [])
-console.log(users)
+    dispatch(getAllUsers(currentPage))
+  }, [currentPage])
+
+  const handleChange = (event, value) => {
+    console.log(value)
+    dispatch(setCurrentPage(value));
+  };
   return (<>
     <DashboardHeader />
     <div className='dashboard'>
@@ -44,8 +46,8 @@ console.log(users)
       </table>
     </div>
     <div spacing={2}>
-      <h3>page : {page}</h3>
-      <Pagination count={totalPages} color="primary" page={page} onChange={handleChange} />
+      <h3>page : {currentPage}</h3>
+      <Pagination count={totalPages} color="primary" page={currentPage} onChange={handleChange} />
     </div>
   </>
   )

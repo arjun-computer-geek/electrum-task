@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "axios"
-export const getAllUsers =  createAsyncThunk("user/getAllUsers", async() => {
+export const getAllUsers =  createAsyncThunk("user/getAllUsers", async(curentPage) => {
     try{
-        const {data} = await axios.get("https://reqres.in/api/users?page=2")
+        const {data} = await axios.get(`https://reqres.in/api/users?page=${curentPage}`)
         return data;
     }catch(err){
 
@@ -20,7 +20,7 @@ export const userSlice = createSlice({
     },
     reducers: {
         setCurrentPage : (state, action) => {
-            
+            state.currentPage = action.payload
         }
     },
     extraReducers: {
@@ -30,7 +30,6 @@ export const userSlice = createSlice({
         [getAllUsers.fulfilled]: (state, action) => {
             state.users = action.payload.data;
             state.totalPages = action.payload.total_pages;
-            state.currentPage = action.payload.page;
             state.total = action.payload.total;
         },
         [getAllUsers.rejected]: (state, action) => {
@@ -38,5 +37,5 @@ export const userSlice = createSlice({
         },
     }
 })
-
+export const { setCurrentPage } = userSlice.actions;
 export default userSlice.reducer
