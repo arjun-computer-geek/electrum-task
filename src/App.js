@@ -1,11 +1,13 @@
 import { Login } from "./pages/login/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Signup } from "./pages/signup/Signup";
 
-const App = () =>{
+const App = () => {
   return (
     <>
-    <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={1000}
         hideProgressBar={true}
@@ -15,8 +17,14 @@ const App = () =>{
         pauseOnFocusLoss
         draggable
       />
+      <Router>
+        <Routes>
+          <Route path="/" element={<h1>Home</h1>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
 
-      <Login />
+        </Routes>
+      </Router>
     </>
   );
 }

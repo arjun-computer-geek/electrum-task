@@ -2,10 +2,9 @@
     padding-top: 2rem;
 }
 .login-main .form-container {
-    margin-top: 5rem;
     background: var(--gray-00);
     width: 20rem;
-    min-height: 30rem;
+    min-height: 28rem;
     position: relative;
     text-align: center;
     padding: 1.25em 0;
@@ -14,14 +13,6 @@
     overflow: hidden;
 }
  
-.login-main .form-container span {
-    font-weight: bold;
-    padding: 0 .5em;
-    color: var(--gray-75);
-    cursor: pointer;
-    width: 6.25rem;
-    display: inline-block;
-}
 
 .login-main .form-btn {
     display: inline-block;
@@ -31,7 +22,7 @@
     max-width: 20rem;
     padding: 0 1.25em;
     position: absolute;
-    top: 8rem;
+    top: 5rem;
     transition: transform 1s;
 }
 
