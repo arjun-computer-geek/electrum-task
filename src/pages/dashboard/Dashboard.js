@@ -10,11 +10,11 @@ export const Dashboard = () => {
   useEffect(() => {
     dispatch(getAllUsers())
   }, [])
-
+console.log(users)
   return (<>
     <DashboardHeader />
     <div className='dashboard'>
-      <table>
+      <table className='user'>
         <tr>
           <th>id</th>
           <th>firstName</th>
@@ -22,19 +22,20 @@ export const Dashboard = () => {
           <th>email</th>
           <th>Photo</th>
         </tr>
-        <tr>
+        
           {
             users?.map(user => {
               return<>
-              <th>{user.id}</th>
-              <th>{user.firstName}</th>
-              <th>{user.lastName}</th>
-              <th>{user.email}</th>
-              <th><img src={user.avatar} /></th>
+              <tr>
+              <td>{user.id}</td>
+              <td>{user.first_name}</td>
+              <td>{user.last_name}</td>
+              <td>{user.email}</td>
+              <td><img src={user.avatar} /></td>
+              </tr>
               </> 
             })
           }
-        </tr>
       </table>
     </div>
     <div spacing={2}>
